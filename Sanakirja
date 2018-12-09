@@ -1,0 +1,85 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class sanakirja1 {
+
+	public static void main(String[] args) {
+		
+		Scanner lukija = new Scanner(System.in);
+		
+		HashMap<String, String> sanat = new HashMap<>();
+		sanat.put("kissa", "cat");
+		sanat.put("koira", "dog");
+		sanat.put("hevonen", "horse");
+		sanat.put("auto", "car");
+		sanat.put("vene", "boat");
+		
+		String sana;
+		String sana1;
+		System.out.println("Sanakirjan sisältö: " + sanat);
+		System.out.println();
+		System.out.println("-------------------------------------");
+		System.out.println("Kirjoita käännös, jos haluat sanan käännöksen tai lisää, jos haluat lisätä sanoja.");
+		sana = lukija.nextLine();
+		
+		//Kirjoittamalla käännös käyttäjä saa mahdollisuuden kirjoittaa haluamansa sanan käännöksen.
+		
+		if (sana.contains("käännös")){
+			
+			do {
+			System.out.println("Minkä sanan käännöksen haluat tietää? (tyhjä sana lopettaa)");		
+			sana = lukija.nextLine();
+		
+			if (sana != null) {	
+			System.out.println();
+			String arvo = sanat.get(sana);
+			System.out.println("Sanan " + sana + " käännös on " + arvo);
+			System.out.println("-------------------------------------");
+			}
+				
+			} while (lukija.hasNextLine() );
+				System.out.println("Ohjelma lopetetaan, kiitos käynnistä!");
+			}
+		
+		//Kirjoittamalla lisää, käyttäjä voi itse lisätä sanoja sanakirjaan.
+		
+		if (sana.contains("lisää")) {
+			
+		// Käyttäjä syöttää sanan alkukielellä
+			
+		do {
+		System.out.println("Sana alkukielellä? (tyhjä lopettaa)");
+		sana = lukija.nextLine();
+		
+		System.out.println("Sana käännettynä? (tyhjä lopettaa)");
+		sana1 = lukija.nextLine();
+		sanat.put(sana, sana1);
+		} while (sana.length() > 0 );//Silmukka pyörtii niin kauan, kunnes käyttäjä 
+									//painaa enteriä ilman, että on syöttänyt sanaa.
+
+		// Käyttäjä syöttää sanan käännettynä englanniksi
+		
+		System.out.println("-------------------------------------");
+		System.out.println("Sanakirjan sisältö: " + sanat);
+		System.out.println();
+		
+		System.out.println("Kirjoita käännös, jos haluat sanan käännöksen tai lisää, jos haluat lisätä sanoja.");
+		sana = lukija.nextLine();
+		
+		do {
+			System.out.println("Minkä sanan käännöksen haluat tietää? (tyhjä sana lopettaa)");		
+			sana = lukija.nextLine();
+		
+			if (sana != null) {	
+			System.out.println();
+			String arvo = sanat.get(sana);
+			System.out.println("Sanan " + sana + " käännös on " + arvo);
+			System.out.println("-------------------------------------");
+			}
+			
+				
+			} while (sana.length() > 0 );
+				System.out.println("Ohjelma lopetetaan, kiitos käynnistä!");
+		}
+		}
+}
